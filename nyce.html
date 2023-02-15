@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Anubhav Gupta</title>
+    <link rel="shortcut icon" href="img/a-icon.ico" />
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll"  href="index.html">Home</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center" style="text-align: left">
+                    <!-- <hr class="light"> -->
+                    <h2 style="font-style: italic">NYCe Taxi<h2>
+                    <h4>CONCEPT</h4>
+                    <p class="text-faded" style="font-size: small">
+                    The overall objective of this project was to develop an algorithm that can be used to analyze the pattern in which cabs operate in a city to try and predict the tip can be expected per fare. 
+                    The idea for this project was based on the assumption that the trip history of cab drivers when combined with demographic data about the  model the tipping habits of people at different location, different points of times and for different kinds of trips. Using different machine learning techniques, we wanted to develop a system that would assign a given trip into specific classes designating tip amounts.</p>
+                    <h4>DATA</h4>
+                    <p class="text-faded" style="font-size: small">
+                    The dataset was obtained from the New York City Taxi and Limousine Commission(NYCT&L).  It covers four years of taxi operations in New York City and includes 697,622,444 trips. 
+                    Source of the dataset: http://publish.illinois.edu/dbwork/open-data/
+                    <br><br>
+                    he data consists of two parts - Trip data containing trip information like pickup_datetime, trip distance, trip time etc. and Fare data containing fare information like fare amount, tip amount etc.
+                    <br><br>
+                    We had latitude and longitude information in our trip data. We wanted to get information about the characteristics of the place like affluency, cost of living etc. Our initial plan was to split our latitude and longitude into the different boroughs. But the boroughs extend over a large area, so we instead decided to go with zip codes . We found open data which had zip codes  and the latitude-longitude pair for the centre of that zip code. We also scraped a website to obtain demographic information of a zip code. We joined these datasets and added in the attributes on demographic information to our  merged trip-fare dataset.
+                    </p>
+                    <h4>APPROACH</h4>
+                    <p class="text-faded" style="font-size: small">
+                    Like mentioned earlier, the dataset consists of trip and fare data. Our initial ideas were to predict peak hours in  the city and predict traffic at  different times as a function of the average speed. After further analysis and discussion we concluded these problem statements are good visualization projects and we looked at more machine learning based problem statement.
+                    <br><br>
+                    Wait time Prediction
+                    Our next approach was to predict the wait time - the time a taxi driver has to wait in between trips. The dataset does not explicitly have the wait times. We would have had to derive the wait times between trips  from the pickup and dropoff timings and the passenger count information. We performed these data operations and figured out the dataset had 98% zero wait time and the rest of it was about an average of just one minute. Since the data was very skewed and since there was not much of a practical significance of the predicting wait time  problem we decided to try a explore the dataset with a slightly different angle. We found that our previous analysis could be leveraged to try and solve another challenging problem, that of tip prediction.
+                    <br><br>
+                    Tip Amount Prediction
+                    We wanted to predict the tip amount a driver is likely to receive. 
+                    Since we found the data to be skewed for wait times, we wanted to confirm that was not the case for tip amounts. We found 50% of the data had zero tip. So, we were safe here. Our generic approach was to visualize the data to understand it better. This would give us information about outliers and incorrect (absurd values) that need to be removed. Apart from data cleaning, the other important affordance of the visualizations is the correlation we can derive between the different attributes and the tip amount. 
+                    </p>
+                     <h4>ALGORITHMS USED</h4>
+                    <p class="text-faded" style="font-size: small">
+                    In order to analyze the Jeopardy data and generate insights out of it, we followed the a process that looked at the data using the following visualizations:
+                    <ul class="text-faded" style="font-size: small">
+                        <li>
+                        Classification Models
+                            <ul>
+                                <li>Support Vector Machines</li>
+                                <li>Decision Trees</li>
+                                <li>Random Forests</li>
+                                <li>Adaboost</li>
+                            </ul>
+                        </li>
+                        <li>
+                        Regression Models
+                            <ul>
+                                <li>Linear Regression</li>
+                                <li>SVM Regression</li>
+                                <li>Lasso Regression</li>
+                            </ul>
+                        </li>
+                    </ul>
+                    </p>
+                   <a href="https://docs.google.com/a/berkeley.edu/presentation/d/1MjarAfW8HOpCPedzbrOp2zSfMudOb0rdCWuctHULB8M/edit?usp=sharing"class="btn btn-primary btn-xl page-scroll" target="_blank">View Presentation</a>
+                </div>
+                <div class="col-lg-4 text-center" style="padding-top: 100px">
+                <img src="img/nyce/nyce1.png" class="img-responsive" alt="" style="margin :auto">
+                <p>Visualizations</p>
+                <img src="img/nyce/nyce2.png" class="img-responsive" alt="" style="margin :auto">
+                <p>Correlations</p>
+                <img src="img/nyce/nyce3.png" class="img-responsive" alt="" style="margin :auto">
+                <p>Confusion Matrix</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row" class="call-to-action">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Get In Touch!</h2>
+                    <hr class="primary">
+                </div>
+                <div class="col-lg-2 col-lg-offset-3 text-center">
+                    <a href="https://github.com/binnie869" class="fa fa-github fa-3x wow bounceIn"></a>
+                </div>
+                <div class="col-lg-2  text-center">
+                    <a href="https://www.linkedin.com/in/anubhavg1" class="fa fa-linkedin fa-3x wow bounceIn"></a>
+                </div>
+                <!--div class="col-lg-1 text-center">
+                    <a class="fa fa-phone fa-3x wow bounceIn"></i>
+                </div-->
+                <div class="col-lg-2 text-center">
+                    <a href="mailto:anubhav.rg@berkeley.edu" class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+</body>
+
+</html>
