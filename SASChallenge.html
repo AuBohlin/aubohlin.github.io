@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Austin Bohlin</title>
+    <link rel="shortcut icon" href="img/a-icon.ico" />
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="page-top">
+
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll"  href="index.html">Home</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#contact">Contact</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <section class="bg-primary" id="about">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 text-center" style="text-align: left">
+                    <!-- <hr class="light"> -->
+                    <h2 style="font-style: italic">SAS Optimization Challenge<h2>
+                    <h4>THE PROBLEM</h4>
+                    <p class="text-faded" style="font-size: medium">
+                        Our team was tasked with building a skill-based matchmaking system (SBMM) using kill-death ratio
+                        (K/D) as the sole match making rating (MMR) factor. We were provided a list of 300 players and
+                        their respective K/D’s, 3 lobbies and their respective K/D targets, and a list of premade player teams.
+                        Our challenge was to create evenly balanced teams in each lobby while also have a short solve time.</p>
+                    <h4>METHODS</h4>
+                    <p class="text-faded" style="font-size: medium">
+                        Our approach was to structure the problem so an Mixed-Interger Linear Program could solve for the optimal placements of players and teams.
+                        We set up of a 300x300x3 binary decision matrix to store the information of group and team assignments.  
+                        By recognizing that this matrix was symetric on the i,j plane we were able to limit our constraints to only the top-right half of this matrix.  
+                        This essentially limited our constraints and decision variables in half, which in turn, cut solve time in half.  
+                        One of the criteria that was not set up by the challenge was the definition of a balanced game.  
+                        We tried 2 different minimization functions for creating fair games: minimizing the sum of squared difference between teams, and 
+                        minimizing the sum of absolute difference between teams.  These two measures ended up with very good lobby assignments and the similar solve times.
+                    </p>
+
+                    <h4>RESULTS</h4>
+                    <p class="text-faded" style="font-size: medium">
+                    We achieved a solve time using this structure of 6.58 seconds, which was the fastest in the competition.
+                    This along with our explination of the business limitation won of 1st place and the $600 prize.
+                    If you are interested in learning more about the specifics and math behind the MILP we set up, I would recommend reading our project report below.
+                    </p>
+                    <h4>LIMITATIONS</h4>
+                    <p class="text-faded" style="font-size: medium">
+                    One of the main limitations of this challenge is in its set-up.  
+                    Since the challenge only uses K/D as the sole MMR factor, any pairing made after the first few games will have limited usefulness.  
+                    This is because as the games play out, if we have made a truly fair and balanced match, we should expect each team to end with a K/D of 1.  
+                    This will tend to pull everyones overall K/D toward 1, even though a K/D of 1 in a high skill lobby should mean much more than that same K/D in a low skill lobby.  
+                    Instead, K/D should be used to modify some other metrix at the end of each game, based on the relative skill of the other players in that lobby.                  
+                    </p>
+
+                    
+                   <a href="docs/SAS/SBMM_Writeup_Final.pdf" class="btn btn-primary btn-xl page-scroll" target="_blank">Link To Project Report</a>
+                   <a href="https://skfb.ly/NLSW" class="btn btn-primary btn-xl page-scroll" target="_blank" style="background-color: ">Link to SAS Code</a>
+                   <a href="https://youtu.be/h2jn6qgZF9c" class="btn btn-primary btn-xl page-scroll" target="_blank">Link to Presentation</a>
+                </div>
+                
+                <div class="col-lg-4 text-center" style="padding-top: 100px">
+                    <a href="img/SAS/DecisionMatrix.png">    
+                        <img src="img/SAS/DecisionMatrix.png" class="img-responsive" alt="" style="margin :auto" height="400" width="400">
+                    </a>
+                    <p>Decision Matrix</p>
+                    
+                    <a href="img/SAS/Absolute_Difference.png">
+                        <img src="img/SAS/Absolute_Difference.png" class="img-responsive" alt="" style="margin :auto" height="400" width="400">
+                    </a>
+                    <a href="img/SAS/Squared_Difference.png">
+                        <img src="img/SAS/Squared_Difference.png" class="img-responsive" alt="" style="margin :auto" height="400" width="400">
+                    </a>
+                    <p>Solve Time Differences</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <div class="row" class="call-to-action">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Get In Touch!</h2>
+                    <hr class="primary">
+                </div>
+                <!-- <div class="col-lg-2 col-lg-offset-3 text-center">
+                    <a href="https://github.com/AuBohlin" class="fa fa-github fa-3x wow bounceIn"></a>
+                </div> -->
+                <div class="col-lg-2 col-lg-offset-4 text-center">
+                    <a href="https://www.linkedin.com/in/austin-bohlin/" class="fa fa-linkedin fa-3x wow bounceIn"></a>
+                </div>
+
+                <div class="col-lg-2 text-center">
+                    <a href="mailto:abohlin@purdue.edu" class="fa fa-envelope-o fa-3x wow bounceIn" data-wow-delay=".1s"></a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+</body>
+
+</html>
