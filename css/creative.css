@@ -51,9 +51,9 @@ p {
     line-height: 1.5;
 }
 
-.bg-primary {
+/* .bg-primary {
     background-color: #f05f40;
-}
+} */
 
 .bg-dark {
     color: #fff;
@@ -124,7 +124,7 @@ aside {
 @media(min-width:768px) {
     .navbar-default {
         border-color: rgba(255,255,255,.3);
-        background-color: transparent;
+        background-color: #f05f40;
     }
 
     .navbar-default .navbar-header .navbar-brand {
