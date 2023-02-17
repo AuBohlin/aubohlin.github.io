@@ -76,49 +76,29 @@ img:hover {
         <!-- /.container-fluid -->
     </nav>
 
-    <section class="bg-primary" id="about" style="color: #fff;
-    background-color: #337ab7;">
+    <section class="bg-primary" id="about">
 
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 text-center" style="text-align: left">
                     <!-- <hr class="light"> -->
-                    <h2 style="font-style: italic">SAS Optimization Challenge<h2>
+                    <h2 style="font-style: italic">Journal Publications Network<h2>
                     <h4>THE PROBLEM</h4>
                     <p class="text-faded" style="font-size: medium">
-                        Our team was tasked with building a skill-based matchmaking system (SBMM) using kill-death ratio
-                        (K/D) as the sole match making rating (MMR) factor. We were provided a list of 300 players and
-                        their respective K/D’s, 3 lobbies and their respective K/D targets, and a list of premade player teams.
-                        Our challenge was to create evenly balanced teams in each lobby while also have a short solve time.</p>
+            
+                    </p>
                     <h4>METHODS</h4>
                     <p class="text-faded" style="font-size: medium">
-                        Our approach was to structure the problem so an Mixed-Interger Linear Program could solve for the optimal placements of players and teams.
-                        We set up of a 300x300x3 binary decision matrix to store the information of group and team assignments.  
-                        By recognizing that this matrix was symetric on the i,j plane we were able to limit our constraints to only the top-right half of this matrix.  
-                        This essentially limited our constraints and decision variables in half, which in turn, cut solve time in half.  
-                        One of the criteria that was not set up by the challenge was the definition of a balanced game.  
-                        We tried 2 different minimization functions for creating fair games: minimizing the sum of squared difference between teams, and 
-                        minimizing the sum of absolute difference between teams.  These two measures ended up with very good lobby assignments and the similar solve times.
+                       
                     </p>
 
                     <h4>RESULTS</h4>
                     <p class="text-faded" style="font-size: medium">
-                    We achieved a solve time using this structure of 6.58 seconds, which was the fastest in the competition.
-                    This along with our explination of the business limitation won of 1st place and the $600 prize.
-                    If you are interested in learning more about the specifics and math behind the MILP we set up, I would recommend reading our project report below.
-                    </p>
-                    <h4>LIMITATIONS</h4>
-                    <p class="text-faded" style="font-size: medium">
-                    One of the main limitations of this challenge is in its set-up.  
-                    Since the challenge only uses K/D as the sole MMR factor, any pairing made after the first few games will have limited usefulness.  
-                    This is because as the games play out, if we have made a truly fair and balanced match, we should expect each team to end with a K/D of 1.  
-                    This will tend to pull everyones overall K/D toward 1, even though a K/D of 1 in a high skill lobby should mean much more than that same K/D in a low skill lobby.  
-                    Instead, K/D should be used to modify some other metrix at the end of each game, based on the relative skill of the other players in that lobby.                  
+                
                     </p>
 
-                   <a href="docs/SAS/SBMM_Writeup_Final.pdf" class="btn btn-primary btn-xl page-scroll" target="_blank">Link To Project Report</a>
-                   <a href="https://github.com/AuBohlin/aubohlin.github.io/blob/main/docs/SAS/CompFinal.sas" class="btn btn-primary btn-xl page-scroll" target="_blank">Link to SAS Code</a>
-                   <a href="https://youtu.be/h2jn6qgZF9c" class="btn btn-primary btn-xl page-scroll" target="_blank">Link to Presentation</a>
+                   <a href="docs/Network/MGMT590CFA_Project.pdf" class="btn btn-primary btn-xl page-scroll" target="_blank">Link To Project Report</a>
+                   <a href="https://github.com/AuBohlin/aubohlin.github.io/blob/main/docs/SAS/CompFinal.sas" class="btn btn-primary btn-xl page-scroll" target="_blank">Link to Juypter Notebook</a>
                 </div>
                 
                 <div class="col-lg-4 text-center" style="padding-top: 100px">
