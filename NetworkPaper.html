@@ -83,37 +83,64 @@ img:hover {
                 <div class="col-lg-8 text-center" style="text-align: left">
                     <!-- <hr class="light"> -->
                     <h2 style="font-style: italic">Journal Publications Network<h2>
-                    <h4>THE PROBLEM</h4>
+                    <h4>Problem Statement</h4>
                     <p class="text-faded" style="font-size: medium">
-            
+                    This project was our final project for  our Computing For Analytics course.  
+                    We were tasked with selecting a network dataset to apply 5 of the algorithims that we learned in this class.
+                    Our dataset comes from the Stanford Large Network Dataset.
+                    The dataset is a directed paper citation network that covers all the citations of the 27770 papers (nodes) with 352807 citations (edges). 
+                    
                     </p>
-                    <h4>METHODS</h4>
+                    <h4>Clustering</h4>
                     <p class="text-faded" style="font-size: medium">
-                       
+                    Clustering
+                    In this dataset, a cluster could represent a sub-discipline within the high energy physics theory field. 
+                    The reasoning behind the clusters’ representation is that if papers are in a same sub-field, their
+                    characteristics must be also similar, which is represented in the distance between the nodes. 
+                    In addition, papers in a same sub-field will tend to reference each other more than other sub-fields.
+                    We used K-Means clustering algorithm to form the clusters as well as the elbow method to decide on the number of clusters.
                     </p>
 
-                    <h4>RESULTS</h4>
+                    <h4>Betweeness Centrality</h4>
                     <p class="text-faded" style="font-size: medium">
-                
+                    In this dataset, centrality would be a way to measure the influence of the paper. 
+                    We decided to use centrality scores within each cluster to find the most influencial paper in each sub-discipline. 
+                    We made the assumption that the most influencial papers would be the ones cited multiple different types of papers. 
+                    This assumption is what allowed us to use betweeness centrality as a proxy measure of influence.
+                    </p>
+
+                    <h4>Depth First Search</h4>
+                    <p class="text-faded" style="font-size: medium">
+                    We were interested in what we called prolific papers. 
+                    Here we provide 
+                    </p>
+
+                    <h4>Longest Path</h4>
+                    <p class="text-faded" style="font-size: medium">
+                    
+                    </p>
+
+                    <h4>Linear Program</h4>
+                    <p class="text-faded" style="font-size: medium">
+                    
                     </p>
 
                    <a href="docs/Network/MGMT590CFA_Project.pdf" class="btn btn-primary btn-xl page-scroll" target="_blank">Link To Project Report</a>
-                   <a href="https://github.com/AuBohlin/aubohlin.github.io/blob/main/docs/SAS/CompFinal.sas" class="btn btn-primary btn-xl page-scroll" target="_blank">Link to Juypter Notebook</a>
+                   <a href="https://github.com/AuBohlin/aubohlin.github.io/blob/main/docs/Network/Project.ipynb" class="btn btn-primary btn-xl page-scroll" target="_blank">Link to Juypter Notebook</a>
+                   <a href="https://snap.stanford.edu/data/cit-HepPh.html" class="btn btn-primary btn-xl page-scroll" target="_blank">Link To SNAP Dataset</a>
+                   
                 </div>
                 
                 <div class="col-lg-4 text-center" style="padding-top: 100px">
-                    <a href="img/SAS/DecisionMatrix.png">    
-                        <img src="img/SAS/DecisionMatrix.png" class="img-responsive" alt="" style="margin :auto" height="400" width="400">
+                    <a href="img/Network/NetworkClustering.png">    
+                        <img src="img/Network/NetworkClustering.png" class="img-responsive" alt="" style="margin :auto" height="400" width="400">
                     </a>
-                    <p>Decision Matrix</p>
-                    
-                    <a href="img/SAS/Absolute_Difference.png">
-                        <img src="img/SAS/Absolute_Difference.png" class="img-responsive" alt="" style="margin :auto" height="400" width="400">
+                    <p>Cluster Analysis</p>
+
+                    <a href="img/Network/NetworkLP.png">
+                        <img src="img/Network/NetworkLP.png" class="img-responsive" alt="" style="margin :auto" height="400" width="400">
                     </a>
-                    <a href="img/SAS/Squared_Difference.png">
-                        <img src="img/SAS/Squared_Difference.png" class="img-responsive" alt="" style="margin :auto" height="400" width="400">
-                    </a>
-                    <p>Solve Time Differences</p>
+                    <p>Linear Problem Definition</p>
                 </div>
             </div>
         </div>
