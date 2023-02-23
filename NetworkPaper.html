@@ -111,19 +111,40 @@ img:hover {
 
                     <h4>Depth First Search</h4>
                     <p class="text-faded" style="font-size: medium">
-                    We were interested in what we called prolific papers. 
-                    Here we provide 
+                    The next thing we were interested in was what we called prolific papers. 
+                    A prolific paper would be one that spawned many other papers and presented an idea that was continously developed upon. 
+                    We assumed this type of paper would produce the greatest number of successor nodes. 
+                    Depth first search was used as a proxy for this by getting the depth of a family produced by each paper.
                     </p>
 
                     <h4>Longest Path</h4>
                     <p class="text-faded" style="font-size: medium">
-                    
+                    We wanted to see if we could predict which papers were on the cutting edge of their field. 
+                    We reasoned that a paper's distance from the central node of the cluster would be a good proxy measure of the cutting edge. 
+                    To find these values, we used Dijkstra's longest path algorithim. 
+                    We ran into some issues with our graph being cyclical, which we assumed could not happen. 
+                    We found out that some papers referenced eachother, so we trimmed the graph of all cycle connections.
                     </p>
 
                     <h4>Linear Program</h4>
                     <p class="text-faded" style="font-size: medium">
-                    
+                    Another insight we wanted to pull was the minimum number of papers someone would need to read in order to get an understanding of a particular subfield as a whole.
+                    We only wanted to focus on "important" papers, which we defined as being cited atleast 10 times. 
+                    After trimming out each cluster to just those papers, we set up an LP with puLP. 
+                    An interesting note, this collection of nodes is refered to as a minimum dominating set. A dominating set is a set of nodes that allows you to travel to any other node in the network.
                     </p>
+
+                    <h4>Things I Would Do Differently</h4>
+                    <p class="text-faded" style="font-size: medium">
+                    Looking back at this project, there a few things that don't sit well with me. 
+                    First is the number of clusters we choose for K-means. Looking at the graph now, it really looks like the number of clusters should be 3 from the elbow method.
+                    This is made even more apparent when looking at the names of the main papers from cluster 1 and 4.
+                    <br>
+                    The way of finding cutting edge papers. Looking at it know, I think time should have been incorporated into that analysis. 
+                    Without the time part, some of the papers with the longest path's could have been dead-ends, so far out that they can't be worked on further. 
+                    We had access to the metadata for each node, but as with most projects, we were on a deadline and had to choose what to focus on and what to cut out.
+                    It would have been great to see if we could have followed up with the papers we identified in the future to see if they really became important to the field.
+                </p>
 
                    <a href="docs/Network/MGMT590CFA_Project.pdf" class="btn btn-primary btn-xl page-scroll" target="_blank">Link To Project Report</a>
                    <a href="https://github.com/AuBohlin/aubohlin.github.io/blob/main/docs/Network/Project.ipynb" class="btn btn-primary btn-xl page-scroll" target="_blank">Link to Juypter Notebook</a>
