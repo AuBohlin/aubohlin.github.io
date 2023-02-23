@@ -86,24 +86,24 @@ img:hover {
                     <h4>THE PROBLEM</h4>
                     <p class="text-faded" style="font-size: medium">
                         Our team was tasked with building a skill-based matchmaking system (SBMM) using kill-death ratio
-                        (K/D) as the sole match making rating (MMR) factor. We were provided a list of 300 players and
-                        their respective K/D’s, 3 lobbies and their respective K/D targets, and a list of premade player teams.
-                        Our challenge was to create evenly balanced teams in each lobby while also have a short solve time.</p>
+                        (K/D) as the sole matchmaking rating (MMR) factor. We were provided a list of 300 players and
+                        their respective K/Ds, 3 lobbies and their respective K/D targets, and a list of premade player teams.
+                        Our challenge was to create evenly balanced teams in each lobby while also having a short solve time.</p>
                     <h4>METHODS</h4>
                     <p class="text-faded" style="font-size: medium">
                         Our approach was to structure the problem so a Mixed-Integer Linear Program could solve for the optimal placements of players and teams.
-                        We set up of a 300x300x3 binary decision matrix to store the information of group and team assignments.  
+                        We set up a 300x300x3 binary decision matrix to store the information of group and team assignments.  
                         By recognizing that this matrix was symmetric on the i-j plane we were able to limit our constraints to only the top-right half of this matrix.  
                         This essentially limited our constraints and decision variables in half, which in turn, cut solve time in half.  
                         One of the criteria that was not set up by the challenge was the definition of a balanced game.  
-                        We tried 2 different minimization functions for creating fair games: minimizing the sum of squared difference between teams and 
-                        minimizing the sum of absolute difference between teams.  These two measures ended up with very good lobby assignments and the similar solve times.
+                        We tried 2 different minimization functions for creating fair games: minimizing the sum of the squared difference between teams and 
+                        minimizing the sum of the absolute difference between teams.  These two measures ended up with very good lobby assignments and similar solve times.
                     </p>
 
                     <h4>RESULTS</h4>
                     <p class="text-faded" style="font-size: medium">
                     We achieved a solve time using this structure of 6.58 seconds, which was the fastest in the competition.
-                    This along with our explanation of the business limitation won of 1st place and the $600 prize.
+                    This along with our explanation of the business limitation won us 1st place and the $600 prize.
                     If you are interested in learning more about the specifics and math behind the MILP we set up, I would recommend reading our project report below.
                     </p>
                     <h4>LIMITATIONS</h4>
